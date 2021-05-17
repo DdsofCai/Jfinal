@@ -1,0 +1,60 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		tr:hover{background-color: lightblue}
+	</style>
+</head>
+<body>
+
+<script>
+
+
+</script>
+<div>
+	<div style="border:1px solid black;width:20%;margin-bottom: 20px;padding-left: 10px"><p>新增用户</p>
+		<form action="/user/addUser" method="post">
+			<p>账号:<input type="text" name="user.username"></p>
+			<p>密码<input type="text" name="user.password"></p>
+			<p><button type="submit">新增用户</button></p>
+
+
+		</form>
+
+
+	</div>
+
+
+	<table class="list" style="border:1px solid black">
+		<tbody>
+		<tr>
+			<th width="25%">id</th>
+			<th width="25%">账号</th>
+			<th width="25%">密码</th>
+			<th width="25%">操作</th>
+		</tr>
+
+		#for(x : userPage.getList())
+		<tr>
+			<td style="text-align:left;">#(x.id)</td>
+			<td style="text-align:left;">#(x.username)</td>
+			<td style="text-align:left;">#(x.password )</td>
+			<td style="text-align:left;">
+				暂无
+				<!--					&nbsp;&nbsp;<a href="/user/deleteById/#(x.id)">删除</a>-->
+				<!--					&nbsp;&nbsp;<a href="/user/edit/#(x.id)">修改</a>-->
+			</td>
+		</tr>
+		#end
+		</tbody>
+	</table>
+	#@paginate(userPage.pageNumber, userPage.totalPage, "/user/pageList?page=")
+</div>
+
+</body>
+</html>
